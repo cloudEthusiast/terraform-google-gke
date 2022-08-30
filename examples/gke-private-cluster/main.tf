@@ -51,6 +51,7 @@ module "gke_cluster" {
   location = var.location
   network  = module.vpc_network.network
 
+
   # We're deploying the cluster in the 'public' subnetwork to allow outbound internet access
   # See the network access tier table for full details:
   # https://github.com/gruntwork-io/terraform-google-network/tree/master/modules/vpc-network#access-tier
@@ -98,6 +99,7 @@ resource "google_container_node_pool" "node_pool" {
   project  = var.project
   location = var.location
   cluster  = module.gke_cluster.name
+  
 
   initial_node_count = "1"
 
